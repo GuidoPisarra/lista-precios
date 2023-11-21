@@ -1,0 +1,36 @@
+ion-content{
+background-color: aqua;
+}
+img{
+    max-height: 15rem;
+    width: 100%;
+}
+
+body,
+span {
+    height: 30%;
+    width: 50%;
+    border: 2px solid var(--ion-color-success-tint);
+    border-radius: 20px;
+    margin-left: 24%;
+    margin-top: 10%;
+}
+
+.codeBarScanner {
+    height: 18%;
+    width: 80%;
+    border: 2px solid var(--ion-color-success-tint);
+    border-radius: 20px;
+    margin-left: 9%;
+    margin-top: 75%;
+}
+
+
+.scanner-ui{
+
+    background-color: transparent;
+}
+ion-content,
+.fondoScanner {
+    --background: transparent;
+}
