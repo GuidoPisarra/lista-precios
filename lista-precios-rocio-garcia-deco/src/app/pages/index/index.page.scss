@@ -1,9 +1,7 @@
-ion-content{
-background-color: aqua;
-}
 img{
-    max-height: 15rem;
-    width: 100%;
+    max-height: 8rem;
+    width: 90%;
+    margin-left: 5%;
 }
 
 body,
@@ -28,10 +26,12 @@ span {
 
 
 .scanner-ui{
-
     background-color: transparent;
 }
-ion-content,
+ion-content{
+    --background: black;
+    --color: whitesmoke;
+}
 .fondoScanner {
-    --background: transparent;
+    background-color: transparent;
 }
