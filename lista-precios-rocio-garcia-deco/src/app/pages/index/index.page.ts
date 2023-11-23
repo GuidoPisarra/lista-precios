@@ -25,7 +25,8 @@ export class IndexPage {
         targetedFormats:
           [SupportedFormat.QR_CODE,
           SupportedFormat.CODE_128
-          ]
+          ],
+        cameraDirection: 'back'
       }).then((result) => {
         if (result.format === 'QR_CODE') {
           //TODO mejorar esto
