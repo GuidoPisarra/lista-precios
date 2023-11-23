@@ -39,7 +39,7 @@
       </div>
     </body>
   </div> -->
-  <ion-content>
+  <div [ngClass]="{ 'show-camera': showCamera }">
     <video #video autoplay *ngIf="showCamera"></video>
-    <button (click)="startScanning()" *ngIf="!showCamera">Abrir Cámara</button>
-  </ion-content>
+  </div>
+  <button (click)="startScanning()" *ngIf="!showCamera">Abrir Cámara</button>
