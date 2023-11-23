@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/* import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner, SupportedFormat } from '@capacitor-community/barcode-scanner';
 import { RestService } from 'src/app/service/rest.service';
 
@@ -62,4 +62,59 @@ export class IndexPage {
     BarcodeScanner.showBackground();
   }
 
+}
+ */
+import { Component, OnInit } from '@angular/core';
+declare var Quagga: any; // Utilizando 'any' como tipo para QuaggaJS
+import { RestService } from 'src/app/service/rest.service';
+
+@Component({
+  selector: 'app-index',
+  templateUrl: './index.page.html',
+  styleUrls: ['./index.page.scss'],
+})
+export class IndexPage implements OnInit {
+
+  constructor(private rest: RestService) { }
+
+  ngOnInit() {
+    this.startQuagga();
+  }
+
+  startQuagga() {
+    Quagga.init({
+      inputStream: {
+        name: 'Live',
+        type: 'LiveStream',
+        target: document.querySelector('#camera-preview'), // Elemento HTML para mostrar la vista de la cámara
+        constraints: {
+          width: 480,
+          height: 320,
+          facingMode: 'environment' // Use la cámara trasera
+        },
+      },
+      decoder: {
+        readers: ['ean_reader', 'qr_reader'] // Tipos de códigos que Quagga buscará
+      },
+    }, (err: any) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      Quagga.start();
+      Quagga.onDetected(this.onDetected); // Función para manejar los resultados del escaneo
+    });
+  }
+
+  onDetected = (result: any) => {
+    // Procesar el resultado del escaneo, por ejemplo:
+    if (result.codeResult) {
+      const scannedCode = result.codeResult.code;
+      let product = this.rest.getOneProduct(scannedCode);
+      product.subscribe(async item => {
+        console.log(item);
+        // Realizar acciones con los datos obtenidos del código escaneado
+      });
+    }
+  }
 }
