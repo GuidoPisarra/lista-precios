@@ -35,9 +35,11 @@ export class IndexPage implements OnInit {
 
     this.scanner.addListener('scan', async content => {
       if (content) {
+        alert(content);
         let product = this.rest.getOneProduct(content);
         product.subscribe(async item => {
           console.log(item);
+          alert(item);
         });
         // You might want to handle background class addition here
       } else {
