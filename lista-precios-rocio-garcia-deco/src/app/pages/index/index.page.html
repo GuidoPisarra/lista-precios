@@ -40,6 +40,6 @@
     </body>
   </div> -->
   <ion-content>
-    <div id="camera-preview"></div>
+    <div id="camera-preview" *ngIf="showCamera"></div>
+    <button (click)="startScanning()" *ngIf="!showCamera">Iniciar Escaneo</button>
   </ion-content>
-</ion-content>

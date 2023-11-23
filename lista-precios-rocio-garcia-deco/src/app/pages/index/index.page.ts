@@ -74,6 +74,7 @@ import { RestService } from 'src/app/service/rest.service';
   styleUrls: ['./index.page.scss'],
 })
 export class IndexPage implements OnInit {
+  showCamera: boolean = false;
 
   constructor(private rest: RestService) { }
 
@@ -116,5 +117,9 @@ export class IndexPage implements OnInit {
         // Realizar acciones con los datos obtenidos del código escaneado
       });
     }
+  }
+  startScanning() {
+    this.showCamera = true;
+    this.startQuagga();
   }
 }
