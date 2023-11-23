@@ -2,7 +2,8 @@
   "dependencies": {
     "@capacitor/cli": "^5.5.1",
     "@capacitor/core": "^5.5.1",
-    "crypto-js": "^4.1.1"
+    "crypto-js": "^4.1.1",
+    "instascan": "^1.0.0"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.1.3"
