@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BarcodeScanner, SupportedFormat } from '@capacitor-community/barcode-scanner';
+import { BarcodeScanner, CameraDirection, SupportedFormat } from '@capacitor-community/barcode-scanner';
 import { RestService } from 'src/app/service/rest.service';
 import config from './../../../../capacitor.config';
 @Component({
@@ -27,11 +27,8 @@ export class ScannerPreciosPage implements OnInit {
 
     await BarcodeScanner.startScan(
       {
-        targetedFormats:
-          [SupportedFormat.QR_CODE,
-          SupportedFormat.CODE_128
-          ],
-        cameraDirection: 'back'
+        targetedFormats: [SupportedFormat.QR_CODE, SupportedFormat.CODE_128],
+        cameraDirection: CameraDirection.BACK
       }).then((result) => {
         if (result.format === 'QR_CODE') {
           //TODO mejorar esto
@@ -62,9 +59,9 @@ export class ScannerPreciosPage implements OnInit {
 
         }
       }).catch(err => {
-        console.log(err.message + "aaaaaaaaaa");
+        console.log(err.message);
       });
-    BarcodeScanner.showBackground();
+    // BarcodeScanner.showBackground();
   }
 
 }
