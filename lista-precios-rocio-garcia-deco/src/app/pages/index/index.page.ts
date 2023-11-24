@@ -55,6 +55,7 @@ export class IndexPage {
 
   onDetected = (result: any) => {
     // Procesar el resultado del escaneo aquí
+    alert(result)
     console.log('Resultado del escaneo:', result);
   }
 }
