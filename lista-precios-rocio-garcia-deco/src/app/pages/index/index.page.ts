@@ -9,7 +9,7 @@ declare var Quagga: any;
 })
 export class IndexPage {
   @ViewChild('video', { static: true }) video: ElementRef<HTMLVideoElement> | undefined;
-
+  resultado: string = 'a';
   constructor() { }
   ionViewDidEnter() {
     this.startScanning();
@@ -56,6 +56,7 @@ export class IndexPage {
   onDetected = (result: any) => {
     // Procesar el resultado del escaneo aquí
     alert(result)
+    this.resultado = result;
     console.log('Resultado del escaneo:', result);
   }
 }
