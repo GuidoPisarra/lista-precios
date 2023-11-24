@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <!-- <img src="../../../assets/rociogarciadecobanner.jpg" />
+  <img src="../../../assets/rociogarciadecobanner.jpg" />
   <div>
     <p>Bienvenidos!!!</p>
     <p>Para ver los precios coloque el lector de Qr o de código de barras para visualizar el precio del
@@ -38,8 +38,9 @@
 
       </div>
     </body>
-  </div> -->
-  <div [ngClass]="{ 'show-camera': showCamera }">
+  </div>
+</ion-content>
+<!--   <div [ngClass]="{ 'show-camera': showCamera }">
     <video #video autoplay *ngIf="showCamera"></video>
   </div>
-  <button (click)="startScanning()" *ngIf="!showCamera">Abrir Cámara</button>
+  <button (click)="startScanning()" *ngIf="!showCamera">Abrir Cámara</button> -->

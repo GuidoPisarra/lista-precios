@@ -1,71 +1,7 @@
-/* import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BarcodeScanner, SupportedFormat } from '@capacitor-community/barcode-scanner';
 import { RestService } from 'src/app/service/rest.service';
-
-@Component({
-  selector: 'app-index',
-  templateUrl: './index.page.html',
-  styleUrls: ['./index.page.scss'],
-})
-export class IndexPage {
-
-  constructor(
-    private rest: RestService
-  ) { }
-
-  async ionViewDidEnter() {
-    BarcodeScanner.prepare();
-    await BarcodeScanner.checkPermission({ force: true });
-
-    BarcodeScanner.hideBackground();
-    const background = document.getElementById('content');
-
-    await BarcodeScanner.startScan(
-      {
-        targetedFormats:
-          [SupportedFormat.QR_CODE,
-          SupportedFormat.CODE_128
-          ],
-        cameraDirection: 'back'
-      }).then((result) => {
-        if (result.format === 'QR_CODE') {
-          //TODO mejorar esto
-          if (result.hasContent) {
-            let product = this.rest.getOneProduct(result.content);
-            product.subscribe(async item => {
-
-              console.log(item);
-
-            });
-            background?.classList.add('fondoResultado');
-
-
-          } else {
-            alert('Sin resultados');
-          }
-        } else {
-          if (result.hasContent) {
-            let product = this.rest.getOneProduct(result.content);
-            product.subscribe(async item => {
-
-            });
-            background?.classList.add('fondoResultado');
-
-          } else {
-            alert('Sin resultados');
-          }
-
-        }
-      }).catch(err => {
-        alert(err);
-      });
-    BarcodeScanner.showBackground();
-  }
-
-}
- */
-import { Component, ElementRef, ViewChild } from '@angular/core';
-
+declare var Quagga: any;
 @Component({
   selector: 'app-index',
   templateUrl: './index.page.html',
@@ -75,9 +11,11 @@ export class IndexPage {
   @ViewChild('video', { static: true }) video: ElementRef<HTMLVideoElement> | undefined;
 
   constructor() { }
-  showCamera: boolean = false;
+  ionViewDidEnter() {
+    this.startScanning();
+  }
+
   async startScanning() {
-    this.showCamera = true;
     try {
       const constraints: MediaStreamConstraints = {
         video: {
@@ -90,9 +28,33 @@ export class IndexPage {
       if (this.video && this.video.nativeElement) {
         this.video.nativeElement.srcObject = stream;
         this.video.nativeElement.play();
+
+        // Lógica de QuaggaJS para escanear códigos
+        Quagga.init({
+          inputStream: {
+            name: 'Live',
+            type: 'LiveStream',
+            target: this.video.nativeElement,
+          },
+          decoder: {
+            readers: ['ean_reader', 'qr_reader'] // Tipos de códigos que Quagga buscará
+          },
+        }, (err: any) => {
+          if (err) {
+            console.error(err);
+            return;
+          }
+          Quagga.start();
+          Quagga.onDetected(this.onDetected); // Función para manejar los resultados del escaneo
+        });
       }
     } catch (error) {
       console.error('Error al acceder a la cámara:', error);
     }
+  }
+
+  onDetected = (result: any) => {
+    // Procesar el resultado del escaneo aquí
+    console.log('Resultado del escaneo:', result);
   }
 }
