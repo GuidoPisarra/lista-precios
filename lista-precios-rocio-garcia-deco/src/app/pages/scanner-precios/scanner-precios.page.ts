@@ -31,7 +31,7 @@ export class ScannerPreciosPage implements OnInit {
           [SupportedFormat.QR_CODE,
           SupportedFormat.CODE_128
           ],
-        cameraDirection: 'front'
+        cameraDirection: 'back'
       }).then((result) => {
         if (result.format === 'QR_CODE') {
           //TODO mejorar esto
@@ -62,7 +62,7 @@ export class ScannerPreciosPage implements OnInit {
 
         }
       }).catch(err => {
-        console.log(err + "aaaaaaaaaa");
+        console.log(err.message + "aaaaaaaaaa");
       });
     BarcodeScanner.showBackground();
   }
