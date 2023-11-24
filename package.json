@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@capacitor-community/barcode-scanner": "^4.0.1",
     "@capacitor/cli": "^5.5.1",
     "@capacitor/core": "^5.5.1",
     "crypto-js": "^4.1.1",

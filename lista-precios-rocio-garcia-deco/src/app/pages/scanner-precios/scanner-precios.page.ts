@@ -59,6 +59,8 @@ export class ScannerPreciosPage implements OnInit {
 
         }
       }).catch(err => {
+        console.log('Dirección de la cámara:', CameraDirection.BACK);
+
         console.log(err.message);
       });
     // BarcodeScanner.showBackground();
