@@ -28,7 +28,7 @@ export class ScannerPreciosPage implements OnInit {
     await BarcodeScanner.startScan(
       {
         targetedFormats: [SupportedFormat.QR_CODE, SupportedFormat.CODE_128],
-        cameraDirection: CameraDirection.BACK
+        cameraDirection: CameraDirection.FRONT
       }).then((result) => {
         if (result.format === 'QR_CODE') {
           //TODO mejorar esto

@@ -4,6 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-input value="aaaaaaaaaaaaaaaaa"></ion-input>
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -11,12 +12,12 @@
     </ion-toolbar>
   </ion-header>
 </ion-content>
-<ion-content [fullscreen]="true" id="content">
+<ion-content [fullscreen]="false" id="content">
 
   <body *ngIf="scanActive===true">
 
     <div
-      style="position: absolute; left: 0px; top: -2px; height: 1px; overflow: hidden; visibility: hidden; width: 1px;"
+      style="position: relative; left: 0px; top: -2px; height: 1px; overflow: hidden; visibility: hidden; width: 1px;"
       class="scanner-ui">
       <span
         style="position: absolute; font-size: 300px; width: 50%; height: 50%; margin: 0px; padding: 0px; font-family: Roboto, Arial, sans-serif;">BESbswy</span>
