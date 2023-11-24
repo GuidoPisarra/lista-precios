@@ -1,27 +1,6 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
-// POSIBLES COLORES
-// Paleta 1
-// violeta #4A0061
-// celeste #15B4AC
-// amarillo #D5A95B
-// Paleta 2
-// azul marino #1F1E2C
-// celeste #63C3D7
-// rojo #E86767
-// Paleta 3
-// azul marino #1F1E2C
-// celeste #63C3D7
-// rojo #E86767
-// Paleta 4
-// violeta #6F19C2
-// amarillo #FFBC42
-// rojo #FB5143
-// Paleta 5 ver naranja y gris casi negro
-
-
-
 /** Ionic CSS Variables **/
 :root {
 /* naranja y "negro" */ //violeta #713DD6 y celeste #98D9FE
@@ -37,21 +16,6 @@
   --ion-color-secondary-shade: #0A4568;
   --ion-color-secondary-tint: #DBEBF5;
 
-  /** primary **/
-/*   --ion-color-primary: #FFADAB;
-  --ion-color-primary-rgb: 56, 128, 255;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #D8726F;
-  --ion-color-primary-tint: #FFE9E9; */
-
-  /** secondary **/
-/*   --ion-color-secondary: #AFDBE7;
-  --ion-color-secondary-rgb: 61, 194, 255;
-  --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #5293A6;
-  --ion-color-secondary-tint: #DCF2F8; */
 
   /** tertiary **/
   --ion-color-tertiary: #5260ff;
@@ -119,56 +83,4 @@ ion-tab-bar {
   --background: var(--ion-color-primary-tint);
   --color: var(--ion-color-secondary-shade);
   overflow: visible;
-}
-
-#delete{
-  --background: var(--ion-color-primary-shade);
-  height: 2.5rem;
-  width: 2.5rem;
-  margin-right: 0.5rem;
-}
-#guardar{
-  --background: var(--ion-color-secondary-shade);
-}
-#edit{
-  --background: var(--ion-color-secondary-shade);
-  height: 2.5rem;
-  width: 2.5rem;
-}
-
-ion-fab-button{
-  --background: var(--ion-color-primary-shade);
-}
-
-ion-tab-button{
-  --color: var(--ion-color-secondary-shade);
-}
-
-ion-list{
-  border-radius: 15px !important;
-}
-
-
-
-
-
-
-.custom-spinner {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-.spinner-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 1rem;
-  color: var(--ion-color-primary-shade);
-}
-
-ion-spinner {
-  --color: var(--ion-color-primary-shade);
 }

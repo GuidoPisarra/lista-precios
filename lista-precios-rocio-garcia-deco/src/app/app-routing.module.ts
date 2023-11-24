@@ -9,7 +9,12 @@ const routes: Routes = [
   {
     path: 'index',
     loadChildren: () => import('./pages/index/index.module').then(m => m.IndexPageModule),
+  },
+  {
+    path: 'scanner-precios',
+    loadChildren: () => import('./pages/scanner-precios/scanner-precios.module').then(m => m.ScannerPreciosPageModule)
   }
+
 
 
 
