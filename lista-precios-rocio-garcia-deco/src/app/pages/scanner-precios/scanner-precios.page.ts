@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { BrowserMultiFormatReader } from '@zxing/library';
 
 @Component({
@@ -10,17 +9,13 @@ import { BrowserMultiFormatReader } from '@zxing/library';
 export class ScannerPreciosPage implements OnInit {
   scanActive: boolean = true;
   result: string = '';
-  constructor(
-    private router: Router
-  ) { }
+  constructor() { }
 
   ngOnInit() {
     this.initScanner();
   }
 
   async initScanner() {
-    let isScanning = true; // Bandera para controlar el escaneo
-
     const codeReader = new BrowserMultiFormatReader();
     const video = document.createElement('video');
     document.body.appendChild(video);
@@ -37,17 +32,11 @@ export class ScannerPreciosPage implements OnInit {
       video.play();
 
       if (video instanceof HTMLVideoElement) {
+        console.log(stream.getTracks());
         codeReader.decodeFromVideoElementContinuously(video, (result: any) => {
-          if (isScanning) {
-            // Realiza acciones con el resultado del escaneo
-            console.log(result);
-
-            // Detener el escaneo y apagar la cámara
-            isScanning = false;
-
-
-            // Redirigir a otra página
-            // this.router.navigate(['/otra-pagina']); // Reemplaza '/otra-pagina' por la ruta a la que deseas redirigir
+          if (result !== null) {
+            this.result = result; // Acción con el resultado del escaneo
+            console.log(this.result);
           }
         });
       } else {
