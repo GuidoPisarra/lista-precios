@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>scanner-precios</ion-title>
+    <ion-title>Precios</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,8 +16,8 @@
 
   <body *ngIf="scanActive===true"
     style="margin-top: -455px; background-color:#202124ff; color:white; border: none; max-height: 10%;min-width: 100%; margin-left: 0%; border-radius: 0%;">
-    <div>nombre:{{result}}</div>
-    <div>precio:{{precio}}</div>
+    <div class="texto-resultado">Producto:{{result}}</div>
+    <div class="texto-resultado">Precio:{{precio}}</div>
 
   </body>
 

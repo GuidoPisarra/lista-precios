@@ -30,3 +30,19 @@
 .qrscanner { background-color: transparent; }
 .qrscanner .scanner-ui { display: block; }
 .qrscanner .scanner-hide { visibility: hidden; }
+
+html {
+      font-family: 'Kalam', cursive;
+}
+ion-title {
+  font-family: 'Kalam', cursive;
+  font-size: 25px;
+}
+ion-content {
+  font-family: 'Kalam', cursive;
+  background-color: var(--ion-color-primary);
+}
+ion-toolbar{
+  color:white;
+  --background: #202124ff;
+}

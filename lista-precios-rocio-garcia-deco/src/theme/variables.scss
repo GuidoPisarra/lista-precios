@@ -74,13 +74,4 @@
   --ion-color-light-tint: #f5f6f9;
 }
 
-ion-content{
-  --background-color:rgb(255, 255, 255);
-  height: 100% !important;
-}
 
-ion-tab-bar {
-  --background: var(--ion-color-primary-tint);
-  --color: var(--ion-color-secondary-shade);
-  overflow: visible;
-}

@@ -58,7 +58,7 @@ export class ScannerPreciosPage implements OnInit {
       this.codigoAnterior = codigo;
       const sucursal: Observable<any> = this.rest.getOneProduct(codigo);
       sucursal.subscribe(response => {
-        this.result = response['datos']['product'].descripcion;
+        this.result = response['datos']['product'].description;
         this.precio = response['datos']['product'].salePrice;
       });
     }

@@ -1,7 +1,7 @@
 img{
     max-height: 12rem;
     width: 100%;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 
 ion-content{
@@ -19,7 +19,7 @@ p{
   max-width: 80%;
   margin-left: 10%;
   text-align: center;
-  font-size: large;
+  font-size: 24px;
 }
 
 .divBtn{
@@ -31,8 +31,11 @@ p{
 ion-button{
   min-height: 4rem;
   min-width: 70%;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #202124ff;
   --background: white;
   box-shadow: 2px 2px 8px rgba(255, 255, 255, 0.5);
+  font-family: 'Kalam', cursive;
 }
+
+
