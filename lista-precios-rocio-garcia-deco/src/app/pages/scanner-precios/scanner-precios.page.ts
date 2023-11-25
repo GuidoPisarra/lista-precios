@@ -32,7 +32,11 @@ export class ScannerPreciosPage implements OnInit {
       video.play();
 
       if (video instanceof HTMLVideoElement) {
-        console.log(video);
+        console.log(stream.getTracks());
+        codeReader.decodeFromVideoElementContinuously(video, (result: any) => {
+          this.result = result; // Acción con el resultado del escaneo
+          console.log(this.result);
+        });
       } else {
         console.error('El elemento video no es un HTMLVideoElement válido');
       }
