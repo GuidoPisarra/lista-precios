@@ -39,7 +39,6 @@ export class ScannerPreciosPage implements OnInit {
       if (video instanceof HTMLVideoElement) {
         console.log(stream.getTracks());
         codeReader.decodeFromVideoElementContinuously(video, (result: any) => {
-          this.result = result; // Acción con el resultado del escaneo
           if (result !== null && result !== '') {
             this.result = result; // Acción con el resultado del escaneo
             console.log(this.result);
@@ -56,11 +55,12 @@ export class ScannerPreciosPage implements OnInit {
   }
 
   buscarPrecio(codigo: string) {
-    const sucursal: Observable<any> = this.rest.getOneProduct(codigo);
-    sucursal.subscribe(response => {
-      this.result = response['datos']['product'].descripcion;
-      this.precio = response['datos']['product'].salePrice;
-
-    });
+    if (codigo !== this.result) {
+      const sucursal: Observable<any> = this.rest.getOneProduct(codigo);
+      sucursal.subscribe(response => {
+        this.result = response['datos']['product'].descripcion;
+        this.precio = response['datos']['product'].salePrice;
+      });
+    }
   }
 }
