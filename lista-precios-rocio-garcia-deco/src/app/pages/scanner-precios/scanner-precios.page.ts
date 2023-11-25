@@ -40,8 +40,6 @@ export class ScannerPreciosPage implements OnInit {
         console.log(stream.getTracks());
         codeReader.decodeFromVideoElementContinuously(video, (result: any) => {
           if (result !== null && result !== '') {
-            this.result = result; // Acción con el resultado del escaneo
-            console.log(this.result);
             this.buscarPrecio(result);
           }
         });
