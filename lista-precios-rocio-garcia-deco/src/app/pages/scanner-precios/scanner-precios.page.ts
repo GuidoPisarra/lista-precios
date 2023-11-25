@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BrowserMultiFormatReader } from '@zxing/library';
+import { Observable } from 'rxjs';
+import { RestService } from 'src/app/service/rest.service';
 
 @Component({
   selector: 'app-scanner-precios',
@@ -9,7 +11,10 @@ import { BrowserMultiFormatReader } from '@zxing/library';
 export class ScannerPreciosPage implements OnInit {
   scanActive: boolean = true;
   result: string = '';
-  constructor() { }
+  precio: string = '';
+  constructor(
+    private rest: RestService
+  ) { }
 
   ngOnInit() {
     this.initScanner();
@@ -38,6 +43,7 @@ export class ScannerPreciosPage implements OnInit {
           if (result !== null && result !== '') {
             this.result = result; // Acción con el resultado del escaneo
             console.log(this.result);
+            this.buscarPrecio(result);
           }
         });
       } else {
@@ -47,5 +53,14 @@ export class ScannerPreciosPage implements OnInit {
     } catch (error) {
       console.error('Error al acceder a la cámara:', error);
     }
+  }
+
+  buscarPrecio(codigo: string) {
+    const sucursal: Observable<any> = this.rest.getOneProduct(codigo);
+    sucursal.subscribe(response => {
+      this.result = response['datos']['product'].descripcion;
+      this.precio = response['datos']['product'].salePrice;
+
+    });
   }
 }

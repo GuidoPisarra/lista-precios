@@ -14,29 +14,28 @@
 </ion-content>
 <ion-content [fullscreen]="false" id="content">
 
-  <body *ngIf="scanActive===true">
+  <body *ngIf="scanActive===true"
+    style="margin-top: -455px; background-color:#202124ff; color:white; border: none; max-height: 10%;min-width: 100%; margin-left: 0%; border-radius: 0%;">
+    <div>nombre:{{result}}</div>
+    <div>precio:{{precio}}</div>
 
-    <div
-      style="position: relative; left: 0px; top: -2px; height: 1px; overflow: hidden; visibility: hidden; width: 1px;"
-      class="scanner-ui">
-      <span
-        style="position: absolute; font-size: 300px; width: 50%; height: 50%; margin: 0px; padding: 0px; font-family: Roboto, Arial, sans-serif;">BESbswy</span>
-    </div>
-    <div id="result">
-      {{result}}
-    </div>
   </body>
 
-  <body *ngIf="scanActive===true" class="codeBarScanner">
-
+  <body *ngIf="scanActive===true">
     <div
       style="position: absolute; left: 0px; top: -2px; height: 1px; overflow: hidden; visibility: hidden; width: 1px;"
       class="scanner-ui">
       <span
         style="position: absolute; font-size: 300px; width: 50%; height: 50%; margin: 0px; padding: 0px; font-family: Roboto, Arial, sans-serif;">BESbswy</span>
     </div>
-    <div id="result">
-      {{result}}
+  </body>
+
+  <body *ngIf="scanActive===true" class="codeBarScanner">
+    <div
+      style="position: absolute; left: 0px; top: -2px; height: 1px; overflow: hidden; visibility: hidden; width: 1px;"
+      class="scanner-ui">
+      <span
+        style="position: absolute; font-size: 300px; width: 50%; height: 50%; margin: 0px; padding: 0px; font-family: Roboto, Arial, sans-serif;">BESbswy</span>
     </div>
   </body>
 </ion-content>

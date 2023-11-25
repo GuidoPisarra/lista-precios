@@ -6,8 +6,7 @@ span {
   border: 2px solid var(--ion-color-success-tint);
   border-radius: 20px;
   margin-left: 24%;
-  margin-top: 30%;
-
+  margin-top: -350px;
 }
 
 .codeBarScanner {
@@ -16,10 +15,16 @@ span {
   border: 2px solid var(--ion-color-success-tint);
   border-radius: 20px;
   margin-left: 9%;
-  margin-top: 92%;
+  margin-top: -100px;
 }
 
-
+#result{
+  background-color: aliceblue;
+  margin-top: -0px;
+  min-height: 2rem;
+  position: relative;
+  margin-top: 0px;
+}
 
 ion-content,
 .fondoScanner {
@@ -29,7 +34,6 @@ ion-content,
 .fondoResultado {
   --background: var(--ion-background-color, --ion-color-primary-tint);
 }
-
 
 .cantidad-label-input {
   display: inline-flex;
