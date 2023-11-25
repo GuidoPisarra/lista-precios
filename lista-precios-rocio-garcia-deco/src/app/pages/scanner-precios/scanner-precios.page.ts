@@ -1,69 +1,44 @@
 import { Component, OnInit } from '@angular/core';
+import { BrowserMultiFormatReader } from '@zxing/library';
 
-import { BarcodeScanner, CameraDirection, SupportedFormat } from '@capacitor-community/barcode-scanner';
-import { RestService } from 'src/app/service/rest.service';
-import config from './../../../../capacitor.config';
 @Component({
   selector: 'app-scanner-precios',
   templateUrl: './scanner-precios.page.html',
   styleUrls: ['./scanner-precios.page.scss'],
 })
 export class ScannerPreciosPage implements OnInit {
-  scanActive: any;
-  result: any;
-  ventaCorrecta: any;
+  scanActive: boolean = true;
+  result: string = '';
+  constructor() { }
 
-  constructor(
-    private rest: RestService
-  ) { }
   ngOnInit() {
+    this.initScanner();
   }
-  async ionViewDidEnter() {
-    BarcodeScanner.prepare();
-    await BarcodeScanner.checkPermission({ force: true });
 
-    BarcodeScanner.hideBackground();
-    const background = document.getElementById('content');
+  async initScanner() {
+    const codeReader = new BrowserMultiFormatReader();
+    const video = document.createElement('video');
+    document.body.appendChild(video);
 
-    await BarcodeScanner.startScan(
-      {
-        targetedFormats: [SupportedFormat.QR_CODE, SupportedFormat.CODE_128],
-        cameraDirection: CameraDirection.BACK
-      }).then((result) => {
-        if (result.format === 'QR_CODE') {
-          //TODO mejorar esto
-          if (result.hasContent) {
-            let product = this.rest.getOneProduct(result.content);
-            product.subscribe(async item => {
-
-              console.log(item);
-
-            });
-            background?.classList.add('fondoResultado');
-
-
-          } else {
-            alert('Sin resultados');
-          }
-        } else {
-          if (result.hasContent) {
-            let product = this.rest.getOneProduct(result.content);
-            product.subscribe(async item => {
-
-            });
-            background?.classList.add('fondoResultado');
-
-          } else {
-            alert('Sin resultados');
-          }
-
+    try {
+      const constraints: MediaStreamConstraints = {
+        video: {
+          facingMode: 'environment' // Acceder a la cámara trasera
         }
-      }).catch(err => {
-        console.log('Dirección de la cámara:', CameraDirection.BACK);
+      };
 
-        console.log(err.message);
-      });
-    // BarcodeScanner.showBackground();
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      video.srcObject = stream;
+      video.play();
+
+      if (video instanceof HTMLVideoElement) {
+        console.log(video);
+      } else {
+        console.error('El elemento video no es un HTMLVideoElement válido');
+      }
+
+    } catch (error) {
+      console.error('Error al acceder a la cámara:', error);
+    }
   }
-
 }
