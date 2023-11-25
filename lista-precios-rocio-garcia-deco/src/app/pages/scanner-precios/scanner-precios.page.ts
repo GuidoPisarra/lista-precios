@@ -12,6 +12,7 @@ export class ScannerPreciosPage implements OnInit {
   scanActive: boolean = true;
   result: string = '';
   precio: string = '';
+  codigoAnterior: string = '';
   constructor(
     private rest: RestService
   ) { }
@@ -53,7 +54,8 @@ export class ScannerPreciosPage implements OnInit {
   }
 
   buscarPrecio(codigo: string) {
-    if (codigo !== this.result) {
+    if (codigo !== this.codigoAnterior) {
+      this.codigoAnterior = codigo;
       const sucursal: Observable<any> = this.rest.getOneProduct(codigo);
       sucursal.subscribe(response => {
         this.result = response['datos']['product'].descripcion;
