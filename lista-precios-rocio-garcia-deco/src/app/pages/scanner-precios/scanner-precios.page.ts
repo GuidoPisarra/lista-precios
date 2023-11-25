@@ -34,7 +34,8 @@ export class ScannerPreciosPage implements OnInit {
       if (video instanceof HTMLVideoElement) {
         console.log(stream.getTracks());
         codeReader.decodeFromVideoElementContinuously(video, (result: any) => {
-          if (result !== null) {
+          this.result = result; // Acción con el resultado del escaneo
+          if (result !== null && result !== '') {
             this.result = result; // Acción con el resultado del escaneo
             console.log(this.result);
           }
