@@ -25,7 +25,8 @@ export class ScannerPreciosPage implements OnInit {
     const codeReader = new BrowserMultiFormatReader();
     const video = document.createElement('video');
     document.body.appendChild(video);
-
+    video.style.marginTop = '135px';
+    video.style.minHeight = '82%';
     try {
       const constraints: MediaStreamConstraints = {
         video: {
@@ -38,7 +39,6 @@ export class ScannerPreciosPage implements OnInit {
       video.play();
 
       if (video instanceof HTMLVideoElement) {
-        console.log(stream.getTracks());
         codeReader.decodeFromVideoElementContinuously(video, (result: any) => {
           if (result !== null && result !== '') {
             this.buscarPrecio(result);

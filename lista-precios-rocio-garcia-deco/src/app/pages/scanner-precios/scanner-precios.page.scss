@@ -7,6 +7,10 @@ span {
   border-radius: 20px;
   margin-left: 24%;
   margin-top: -350px;
+  --background-color: transparent;
+}
+body{
+  background-color: transparent;
 }
 
 .codeBarScanner {
@@ -18,7 +22,7 @@ span {
   margin-top: -100px;
 }
 
-#result{
+#result {
   background-color: aliceblue;
   margin-top: -0px;
   min-height: 2rem;
@@ -28,18 +32,13 @@ span {
 
 ion-content,
 .fondoScanner {
-  --background: var(--ion-background-color, transparent);
+  --background:  transparent;
 }
 
-.fondoResultado {
-  --background: var(--ion-background-color, --ion-color-primary-tint);
+video{
+min-height: 82%;
+margin-top: 135px;
 }
-
-.texto-resultado{
+.texto-resultado {
   font-size: 25px;
 }
-
-
-
-
-
