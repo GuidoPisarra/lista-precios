@@ -1,6 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Precios</ion-title>
+    <div class="texto-resultado">Producto:{{result}}</div>
+    <div class="texto-resultado">Precio: {{precio | currency}}</div>
   </ion-toolbar>
 </ion-header>
 
@@ -14,11 +16,6 @@
 </ion-content>
 <ion-content [fullscreen]="true" id="content">
 
-  <body *ngIf="scanActive===true"
-    style="margin-top: -62vh; background-color:#202124ff; color:white; border: none; max-height: 15%;min-width: 100%; margin-left: 0%; border-radius: 0%;">
-    <div class="texto-resultado">Producto:{{result}}</div>
-    <div class="texto-resultado">Precio: {{precio | currency}}</div>
-  </body>
 
   <body *ngIf="scanActive===true" style="margin-top: -40vh;">
     <div class="scanner-ui" style="margin-bottom: 5vh;">
