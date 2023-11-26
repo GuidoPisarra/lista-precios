@@ -8,6 +8,8 @@ body{
     margin-bottom: 1rem;
     --background-color: transparent;
     background-color: transparent;
+    display: flex;
+    flex-direction: column;
   }
 span {
   height: 30%;
